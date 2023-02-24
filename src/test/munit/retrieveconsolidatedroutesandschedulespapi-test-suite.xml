@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:munit="http://www.mulesoft.org/schema/mule/munit" xmlns:munit-tools="http://www.mulesoft.org/schema/mule/munit-tools"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xsi:schemaLocation="
+		http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
+		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd">
+	<munit:config name="retrieveconsolidatedroutesandschedulespapi-test-suite.xml" />
+	<munit:test name="retrieveconsolidatedroutesandschedulespapi-test-suite-retrieveconsolidatedroutesandschedulespapi-mainTest-KitRouter" doc:id="d9d83be7-ddb1-4060-9122-56684b178fe6" description="Test">
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mock when" doc:id="aa57fb8a-4155-40f3-b6b7-9c1342cfdd8a" processor="apikit:router">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="retrieveconsolidatedroutesandschedulespapi-config" attributeName="config-ref" />
+				</munit-tools:with-attributes>
+			</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to retrieveconsolidatedroutesandschedulespapi-main" doc:id="aaabdb65-a03f-4664-9463-9979eaa6d302" name="retrieveconsolidatedroutesandschedulespapi-main"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert doc:name="Assert expression" doc:id="bb52b25e-c4f6-4328-91d1-c57f28980cf0" />
+		</munit:validation>
+	</munit:test>
+	<munit:test name="retrieveconsolidatedroutesandschedulespapi-test-suite-retrieveconsolidatedroutesandschedulespapi-consoleTest" doc:id="f1d4cc5f-840a-419b-a9ad-e5ab819ce32d" description="Test">
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mock when" doc:id="45624727-f105-4562-8007-d9ef65e80bf9" processor="apikit:console">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="retrieveconsolidatedroutesandschedulespapi-config" attributeName="config-ref" />
+				</munit-tools:with-attributes>
+			</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to retrieveconsolidatedroutesandschedulespapi-console" doc:id="ec206517-0283-4028-85bd-d6e020f79cee" name="retrieveconsolidatedroutesandschedulespapi-console"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert doc:name="Assert expression" doc:id="a2887ebb-84d6-4062-b35d-4147c4272db0" />
+		</munit:validation>
+	</munit:test>
+	<munit:test name="retrieveconsolidatedroutesandschedulespapi-test-suite-get:\booking\(transportType)\routes:retrieveconsolidatedroutesandschedulespapi-configTest-Routestravelontip" doc:id="92efa674-0951-4153-a4de-17dfbb5eddd1" description="Test">
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mock when" doc:id="ecefd34e-2a18-46a6-b42c-d32ea1fd4e73" processor="http:request">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="3a7bc316-fdc1-4252-86af-54102952902a" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:payload value='#[output applicatoin/java&#10;---&#10;[&#10;    {&#10;        "companyCode": "TravelOnTip",&#10;        "originLocation": {&#10;            "locationCode": "BEN-SG",&#10;            "locationDesc": "Beauna Vista Singapore"&#10;        },&#10;        "destinationLocation": {&#10;            "locationCode": "KLG-MY",&#10;            "locationDesc": "Kaling Malasia"&#10;        }&#10;    },&#10;    {&#10;        "companyCode": "TravelOnTip",&#10;        "originLocation": {&#10;            "locationCode": "KLG-MY",&#10;            "locationDesc": "Kaling Malasia"&#10;        },&#10;        "destinationLocation": {&#10;            "locationCode": "BEN-SG",&#10;            "locationDesc": "Beauna Vista Singapore"&#10;        }&#10;    },&#10;    {&#10;        "companyCode": "TravelOnTip",&#10;        "originLocation": {&#10;            "locationCode": "BEN-SG",&#10;            "locationDesc": "Beauna Vista Singapore"&#10;        },&#10;        "destinationLocation": {&#10;            "locationCode": "KLG-MY",&#10;            "locationDesc": "Kaling Malasia"&#10;        }&#10;    },&#10;    {&#10;        "companyCode": "TravelOnTip",&#10;        "originLocation": {&#10;            "locationCode": "KLG-MY",&#10;            "locationDesc": "Kaling Malasia"&#10;        },&#10;        "destinationLocation": {&#10;            "locationCode": "BEN-SG",&#10;            "locationDesc": "Beauna Vista Singapore"&#10;        }&#10;    }&#10;]]' />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<munit:set-event doc:name="Set Event" doc:id="6c1fb754-d71f-4567-a105-16b49c2473e3" >
+				<munit:attributes value='#[{&#10;&#10;       "headers" :  { "transactionId" : "hdsfhjdh-jxbv859-sjdf7643-3746bbd" },&#10;       "uriParams" :  { "serviceType" : "routes", &#10;                                "transportType" : "bus" &#10;                                 },&#10;       "queryParams": {"companyName" : "TravelOnTip"}                          &#10;}]' />
+			</munit:set-event>
+			<flow-ref doc:name="Flow-ref to get:\booking\(transportType)\routes:retrieveconsolidatedroutesandschedulespapi-config" doc:id="774d1b52-ebbc-4c7f-a409-424ff8c7368c" name="get:\booking\(transportType)\routes:retrieveconsolidatedroutesandschedulespapi-config"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert doc:name="Assert expression" doc:id="cd0066e0-2934-40bb-b6e6-b1d407a25793" />
+		</munit:validation>
+	</munit:test>
+	<munit:test name="retrieveconsolidatedroutesandschedulespapi-test-suite-get:\booking\(transportType)\schedules:retrieveconsolidatedroutesandschedulespapi-configTest-Schedulestravelontip" doc:id="0ac3afd7-7a52-4d7b-a108-ec93dc53f143" description="Test">
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mock when" doc:id="ea861672-d76e-4326-9832-e1c133968e33" processor="http:request">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="04e3ad01-2245-4520-8b2e-3234ea534ee7" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:payload value='#[output application/java&#10;---&#10;[&#10;    {&#10;        "companyName": "TravelOnTip",&#10;        "availableSeats": "40",&#10;        "departureDateTime": "2021-03-22T12:12:12.090Z",&#10;        "travelRoute": {&#10;            "destinationLocation": {&#10;                "locationCode": "BEN-SG",&#10;                "locationDesc": "Beauna Vista Singapore"&#10;            },&#10;            "originLocation": {&#10;                "locationCode": "KLG-MY",&#10;                "locationDesc": "Kaling Malasia"&#10;            }&#10;        }&#10;    },&#10;    {&#10;        "companyName": "TravelOnTip",&#10;        "availableSeats": "40",&#10;        "departureDateTime": "2021-03-22T12:12:12.090Z",&#10;        "travelRoute": {&#10;            "destinationLocation": {&#10;                "locationCode": "KLG-MY",&#10;                "locationDesc": "Kaling Malasia"&#10;            },&#10;            "originLocation": {&#10;                "locationCode": "BEN-SG",&#10;                "locationDesc": "Beauna Vista Singapore"&#10;            }&#10;        }&#10;    },&#10;    {&#10;        "companyName": "TravelOnTip",&#10;        "availableSeats": "40",&#10;        "departureDateTime": "2021-03-22T12:12:12.090Z",&#10;        "travelRoute": {&#10;            "destinationLocation": {&#10;                "locationCode": "BEN-SG",&#10;                "locationDesc": "Beauna Vista Singapore"&#10;            },&#10;            "originLocation": {&#10;                "locationCode": "KLG-MY",&#10;                "locationDesc": "Kaling Malasia"&#10;            }&#10;        }&#10;    },&#10;    {&#10;        "companyName": "TravelOnTip",&#10;        "availableSeats": "40",&#10;        "departureDateTime": "2021-03-22T12:12:12.090Z",&#10;        "travelRoute": {&#10;            "destinationLocation": {&#10;                "locationCode": "KLG-MY",&#10;                "locationDesc": "Kaling Malasia"&#10;            },&#10;            "originLocation": {&#10;                "locationCode": "BEN-SG",&#10;                "locationDesc": "Beauna Vista Singapore"&#10;            }&#10;        }&#10;    }&#10;]]' />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<munit:set-event doc:name="Set Event" doc:id="fddc565a-8c0f-4887-a318-d2349c05e4dd" >
+				<munit:attributes value='#[{&#10;&#10;       "headers" :  { "transactionId" : "hdsfhjdh-jxbv859-sjdf7643-3746bbd" },&#10;       "uriParams" :  { "serviceType" : "routes", &#10;                                "transportType" : "bus" &#10;                                 },&#10;       "queryParams": {"companyName" : "TravelOnTip"}                          &#10;}]' />
+			</munit:set-event>
+			<flow-ref doc:name="Flow-ref to get:\booking\(transportType)\schedules:retrieveconsolidatedroutesandschedulespapi-config" doc:id="fa5c3f73-3ae1-4542-9c07-118b1fbe2316" name="get:\booking\(transportType)\schedules:retrieveconsolidatedroutesandschedulespapi-config"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert doc:name="Assert expression" doc:id="1913fc64-d702-412d-8b28-013db665ba20" />
+		</munit:validation>
+	</munit:test>
+	<munit:test name="retrieveconsolidatedroutesandschedulespapi-test-suite-get:\booking\(transportType)\routes:retrieveconsolidatedroutesandschedulespapi-configTest-RoutesFastgo" doc:id="321ef23e-3b4c-4719-8b6b-f05d0983cda4" description="Test">
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mock when" doc:id="18f5fac2-e971-4262-86ff-8834faa6ac6c" processor="http:request">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="2fdbcc03-812c-4bb0-9865-4b80ce52c84a" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:payload value='#[output application/java&#10;---&#10;[&#10;    {&#10;        "companyCode": "FastGo",&#10;        "originLocation": {&#10;            "locationCode": "BEN-SG",&#10;            "locationDesc": "Beauna Vista Singapore"&#10;        },&#10;        "destinationLocation": {&#10;            "locationCode": "KLG-MY",&#10;            "locationDesc": "Kaling Malasia"&#10;        }&#10;    },&#10;    {&#10;        "companyCode": "FastGo",&#10;        "originLocation": {&#10;            "locationCode": "KLG-MY",&#10;            "locationDesc": "Kaling Malasia"&#10;        },&#10;        "destinationLocation": {&#10;            "locationCode": "BEN-SG",&#10;            "locationDesc": "Beauna Vista Singapore"&#10;        }&#10;    }&#10;]]' />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<munit:set-event doc:name="Set Event" doc:id="d394b0d1-083d-4091-8a33-6991c472b166" >
+				<munit:attributes value='#[{&#10;&#10;       "headers" :  { "transactionId" : "hdsfhjdh-jxbv859-sjdf7643-3746bbd" },&#10;       "uriParams" :  { "serviceType" : "routes", &#10;                        "transportType" : "bus" &#10;                                 },&#10;       "queryParams": {"companyName" : "FastGo"}                          &#10;}]' />
+			</munit:set-event>
+			<flow-ref doc:name="Flow-ref to get:\booking\(transportType)\routes:retrieveconsolidatedroutesandschedulespapi-config" doc:id="880e1e74-3183-4590-8054-bd0aa4ca2b30" name="get:\booking\(transportType)\routes:retrieveconsolidatedroutesandschedulespapi-config"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert doc:name="Assert expression" doc:id="cde138de-18a3-4bb0-8a7f-5f7505af2aae" />
+		</munit:validation>
+	</munit:test>
+	<munit:test name="retrieveconsolidatedroutesandschedulespapi-test-suite-get:\booking\(transportType)\schedules:retrieveconsolidatedroutesandschedulespapi-configTest-SchedulesFastGo" doc:id="31db2c26-ffc2-4281-ba25-1cc97ee17cd1" description="Test">
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mock when" doc:id="6df820ed-d14c-4194-ae9e-0ae5e5af6ba3" processor="http:request">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="1bce293d-7580-4193-b579-abaf6d09c710" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:payload value='#[output application/java&#10;---&#10;[&#10;    {&#10;        "companyName": "FastGo",&#10;        "availableSeats": "40",&#10;        "departureDateTime": "2021-03-22T12:12:12.090Z",&#10;        "travelRoute": {&#10;            "destinationLocation": {&#10;                "locationCode": "BEN-SG",&#10;                "locationDesc": "Beauna Vista Singapore"&#10;            },&#10;            "originLocation": {&#10;                "locationCode": "KLG-MY",&#10;                "locationDesc": "Kaling Malasia"&#10;            }&#10;        }&#10;    },&#10;    {&#10;        "companyName": "FastGo",&#10;        "availableSeats": "40",&#10;        "departureDateTime": "2021-03-22T12:12:12.090Z",&#10;        "travelRoute": {&#10;            "destinationLocation": {&#10;                "locationCode": "KLG-MY",&#10;                "locationDesc": "Kaling Malasia"&#10;            },&#10;            "originLocation": {&#10;                "locationCode": "BEN-SG",&#10;                "locationDesc": "Beauna Vista Singapore"&#10;            }&#10;        }&#10;    }&#10;]]' />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<munit:set-event doc:name="Set Event" doc:id="b47f8250-84ff-4f40-8dac-5ea09cf31e7b" >
+				<munit:attributes value='#[{&#10;&#10;       "headers" :  { "transactionId" : "hdsfhjdh-jxbv859-sjdf7643-3746bbd" },&#10;       "uriParams" :  { "serviceType" : "routes", &#10;                                "transportType" : "bus" &#10;                                 },&#10;       "queryParams": {"companyName" : "FastGo"}                          &#10;}]' />
+			</munit:set-event>
+			<flow-ref doc:name="Flow-ref to get:\booking\(transportType)\schedules:retrieveconsolidatedroutesandschedulespapi-config" doc:id="f75217a9-cf42-4061-8806-1fa14e9802c3" name="get:\booking\(transportType)\schedules:retrieveconsolidatedroutesandschedulespapi-config"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert doc:name="Assert expression" doc:id="e68f9f91-5a4d-4b76-b403-42163d155903" />
+		</munit:validation>
+	</munit:test>
+	<munit:test name="retrieveconsolidatedroutesandschedulespapi-test-suite-get:\booking\(transportType)\routes:retrieveconsolidatedroutesandschedulespapi-configTest-Routestravelontip-2" doc:id="aa2bea08-de54-4053-97b7-3b182eafcc46" description="Test">
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mock when" doc:id="ed8c0c7e-7732-4611-b84d-d8b5e3f6d48f" processor="http:request">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="3a7bc316-fdc1-4252-86af-54102952902a" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:payload value='#[output application/java&#10;---&#10;[&#10;    {&#10;        "companyCode": "TravelOnTip",&#10;        "originLocation": {&#10;            "locationCode": "BEN-SG",&#10;            "locationDesc": "Beauna Vista Singapore"&#10;        },&#10;        "destinationLocation": {&#10;            "locationCode": "KLG-MY",&#10;            "locationDesc": "Kaling Malasia"&#10;        }&#10;    },&#10;    {&#10;        "companyCode": "TravelOnTip",&#10;        "originLocation": {&#10;            "locationCode": "KLG-MY",&#10;            "locationDesc": "Kaling Malasia"&#10;        },&#10;        "destinationLocation": {&#10;            "locationCode": "BEN-SG",&#10;            "locationDesc": "Beauna Vista Singapore"&#10;        }&#10;    },&#10;    {&#10;        "companyCode": "TravelOnTip",&#10;        "originLocation": {&#10;            "locationCode": "BEN-SG",&#10;            "locationDesc": "Beauna Vista Singapore"&#10;        },&#10;        "destinationLocation": {&#10;            "locationCode": "KLG-MY",&#10;            "locationDesc": "Kaling Malasia"&#10;        }&#10;    },&#10;    {&#10;        "companyCode": "TravelOnTip",&#10;        "originLocation": {&#10;            "locationCode": "KLG-MY",&#10;            "locationDesc": "Kaling Malasia"&#10;        },&#10;        "destinationLocation": {&#10;            "locationCode": "BEN-SG",&#10;            "locationDesc": "Beauna Vista Singapore"&#10;        }&#10;    }&#10;]]' />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<munit:set-event doc:name="Set Event" doc:id="6e3cb09b-23ee-48b6-bc32-41e762b84fd7" >
+				<munit:attributes value='#[{&#10;&#10;       "headers" :  { "transactionId" : "hdsfhjdh-jxbv859-sjdf7643-3746bbd" },&#10;       "uriParams" :  { "serviceType" : "routes", &#10;                                "transportType" : "bus" &#10;                                 },&#10;       "queryParams": {"companyName" : "TravelOnTip"}                          &#10;}]' />
+			</munit:set-event>
+			<flow-ref doc:name="Flow-ref to get:\booking\(transportType)\routes:retrieveconsolidatedroutesandschedulespapi-config" doc:id="4482a529-9588-475d-99ea-0174549dae97" name="get:\booking\(transportType)\routes:retrieveconsolidatedroutesandschedulespapi-config"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert doc:name="Assert expression" doc:id="5561c72c-2302-4a9f-bf8c-51815a8209be" >
+				<munit-tools:that ><![CDATA[#[import * from dw::test::Asserts 
+ ---
+payload must beArray()]]]></munit-tools:that>
+			</munit-tools:assert>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="retrieveconsolidatedroutesandschedulespapi-test-suite-get:\booking\(transportType)\schedules:retrieveconsolidatedroutesandschedulespapi-configTest-Schedulestravelontip-2" doc:id="be602b0d-4bf3-4cbe-a311-67776d27fc6e" description="Test">
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mock when" doc:id="1036f5b4-d5d3-4bd6-aba9-11a3cceb0739" processor="http:request">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="04e3ad01-2245-4520-8b2e-3234ea534ee7" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:payload value='#[output application/java&#10;---&#10;[&#10;    {&#10;        "companyName": "TravelOnTip",&#10;        "availableSeats": "40",&#10;        "departureDateTime": "2021-03-22T12:12:12.090Z",&#10;        "travelRoute": {&#10;            "destinationLocation": {&#10;                "locationCode": "BEN-SG",&#10;                "locationDesc": "Beauna Vista Singapore"&#10;            },&#10;            "originLocation": {&#10;                "locationCode": "KLG-MY",&#10;                "locationDesc": "Kaling Malasia"&#10;            }&#10;        }&#10;    },&#10;    {&#10;        "companyName": "TravelOnTip",&#10;        "availableSeats": "40",&#10;        "departureDateTime": "2021-03-22T12:12:12.090Z",&#10;        "travelRoute": {&#10;            "destinationLocation": {&#10;                "locationCode": "KLG-MY",&#10;                "locationDesc": "Kaling Malasia"&#10;            },&#10;            "originLocation": {&#10;                "locationCode": "BEN-SG",&#10;                "locationDesc": "Beauna Vista Singapore"&#10;            }&#10;        }&#10;    },&#10;    {&#10;        "companyName": "TravelOnTip",&#10;        "availableSeats": "40",&#10;        "departureDateTime": "2021-03-22T12:12:12.090Z",&#10;        "travelRoute": {&#10;            "destinationLocation": {&#10;                "locationCode": "BEN-SG",&#10;                "locationDesc": "Beauna Vista Singapore"&#10;            },&#10;            "originLocation": {&#10;                "locationCode": "KLG-MY",&#10;                "locationDesc": "Kaling Malasia"&#10;            }&#10;        }&#10;    },&#10;    {&#10;        "companyName": "TravelOnTip",&#10;        "availableSeats": "40",&#10;        "departureDateTime": "2021-03-22T12:12:12.090Z",&#10;        "travelRoute": {&#10;            "destinationLocation": {&#10;                "locationCode": "KLG-MY",&#10;                "locationDesc": "Kaling Malasia"&#10;            },&#10;            "originLocation": {&#10;                "locationCode": "BEN-SG",&#10;                "locationDesc": "Beauna Vista Singapore"&#10;            }&#10;        }&#10;    }&#10;]]' />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<munit:set-event doc:name="Set Event" doc:id="e6d2c492-99bd-4296-88a7-42cfcf0ed99a" >
+				<munit:attributes value='#[{&#10;&#10;       "headers" :  { "transactionId" : "hdsfhjdh-jxbv859-sjdf7643-3746bbd" },&#10;       "uriParams" :  { "serviceType" : "routes", &#10;                                "transportType" : "bus" &#10;                                 },&#10;       "queryParams": {"companyName" : "TravelOnTip"}                          &#10;}]' />
+			</munit:set-event>
+			<flow-ref doc:name="Flow-ref to get:\booking\(transportType)\schedules:retrieveconsolidatedroutesandschedulespapi-config" doc:id="5c9e8905-ec15-4602-90a9-608ff492ff01" name="get:\booking\(transportType)\schedules:retrieveconsolidatedroutesandschedulespapi-config"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert doc:name="Assert expression" doc:id="043d039d-5790-48d8-9cd5-72fe80e183bd" >
+				<munit-tools:that ><![CDATA[#[import * from dw::test::Asserts 
+ ---
+payload must beArray()]]]></munit-tools:that>
+			</munit-tools:assert>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="retrieveconsolidatedroutesandschedulespapi-test-suite-get:\booking\(transportType)\routes:retrieveconsolidatedroutesandschedulespapi-configTest-RoutesFastgo-2" doc:id="37b144ae-6503-4af5-b9f4-578c177acc91" description="Test">
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mock when" doc:id="3f4a8b91-6094-442b-92f9-44c9df8f8bdf" processor="http:request">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="2fdbcc03-812c-4bb0-9865-4b80ce52c84a" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:payload value='#[output application/java&#10;---&#10;[&#10;    {&#10;        "companyCode": "FastGo",&#10;        "originLocation": {&#10;            "locationCode": "BEN-SG",&#10;            "locationDesc": "Beauna Vista Singapore"&#10;        },&#10;        "destinationLocation": {&#10;            "locationCode": "KLG-MY",&#10;            "locationDesc": "Kaling Malasia"&#10;        }&#10;    },&#10;    {&#10;        "companyCode": "FastGo",&#10;        "originLocation": {&#10;            "locationCode": "KLG-MY",&#10;            "locationDesc": "Kaling Malasia"&#10;        },&#10;        "destinationLocation": {&#10;            "locationCode": "BEN-SG",&#10;            "locationDesc": "Beauna Vista Singapore"&#10;        }&#10;    }&#10;]]' />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<munit:set-event doc:name="Set Event" doc:id="b1462cee-7f24-4be2-b69b-a7057144c632" >
+				<munit:attributes value='#[{&#10;&#10;       "headers" :  { "transactionId" : "hdsfhjdh-jxbv859-sjdf7643-3746bbd" },&#10;       "uriParams" :  { "serviceType" : "routes", &#10;                                "transportType" : "bus" &#10;                                 },&#10;       "queryParams": {"companyName" : "FastGo"}                          &#10;}]' />
+			</munit:set-event>
+			<flow-ref doc:name="Flow-ref to get:\booking\(transportType)\routes:retrieveconsolidatedroutesandschedulespapi-config" doc:id="55f05ce2-feb5-4ba8-aa78-0a0d20551958" name="get:\booking\(transportType)\routes:retrieveconsolidatedroutesandschedulespapi-config"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert doc:name="Assert expression" doc:id="48d0063b-d1ce-4fb6-bbe7-2ee256f37a9b" >
+				<munit-tools:that ><![CDATA[#[import * from dw::test::Asserts 
+ ---
+payload must beArray()]]]></munit-tools:that>
+			</munit-tools:assert>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="retrieveconsolidatedroutesandschedulespapi-test-suite-get:\booking\(transportType)\schedules:retrieveconsolidatedroutesandschedulespapi-configTest-SchedulesFastgo-2" doc:id="c98e74f7-63f3-4f73-8175-f25f7c81a3d8" description="Test">
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mock when" doc:id="2890c9ca-cd8c-4b6d-9bf4-f17049d95132" processor="http:request">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="1bce293d-7580-4193-b579-abaf6d09c710" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:payload value='#[output application/java&#10;---&#10;[&#10;    {&#10;        "companyName": "FastGo",&#10;        "availableSeats": "40",&#10;        "departureDateTime": "2021-03-22T12:12:12.090Z",&#10;        "travelRoute": {&#10;            "destinationLocation": {&#10;                "locationCode": "BEN-SG",&#10;                "locationDesc": "Beauna Vista Singapore"&#10;            },&#10;            "originLocation": {&#10;                "locationCode": "KLG-MY",&#10;                "locationDesc": "Kaling Malasia"&#10;            }&#10;        }&#10;    },&#10;    {&#10;        "companyName": "FastGo",&#10;        "availableSeats": "40",&#10;        "departureDateTime": "2021-03-22T12:12:12.090Z",&#10;        "travelRoute": {&#10;            "destinationLocation": {&#10;                "locationCode": "KLG-MY",&#10;                "locationDesc": "Kaling Malasia"&#10;            },&#10;            "originLocation": {&#10;                "locationCode": "BEN-SG",&#10;                "locationDesc": "Beauna Vista Singapore"&#10;            }&#10;        }&#10;    }&#10;]]' />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<munit:set-event doc:name="Set Event" doc:id="5d24ec0a-11f1-4011-911b-45114505c971" >
+				<munit:attributes value='#[{&#10;&#10;       "headers" :  { "transactionId" : "hdsfhjdh-jxbv859-sjdf7643-3746bbd" },&#10;       "uriParams" :  { "serviceType" : "routes", &#10;                                "transportType" : "bus" &#10;                                 },&#10;       "queryParams": {"companyName" : "TravelOnTip"}                          &#10;}]' />
+			</munit:set-event>
+			<flow-ref doc:name="Flow-ref to get:\booking\(transportType)\schedules:retrieveconsolidatedroutesandschedulespapi-config" doc:id="3e00242a-c6b2-4dfe-98eb-17eaf0c4acf6" name="get:\booking\(transportType)\schedules:retrieveconsolidatedroutesandschedulespapi-config"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert doc:name="Assert expression" doc:id="fb100324-0367-4b87-a263-da1230f9bf9b" >
+				<munit-tools:that ><![CDATA[#[import * from dw::test::Asserts 
+ ---
+payload must beArray()]]]></munit-tools:that>
+			</munit-tools:assert>
+		</munit:validation>
+	</munit:test>
+
+
+</mule>
